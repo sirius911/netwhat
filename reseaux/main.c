@@ -14,22 +14,26 @@
 #include "includes/ft_printf.h"
 
 void	ft_free(void *content)
+/*fonction pour free les listes*/
 {
 	free (content);
 	content = NULL;
 }
 
 char 	*ft_et(t_list *lst1, t_list *lst2)
+/*fonction pour le 'et' binaire => & */
 {
 	return (ft_itoa(ft_atoi(lst1->content) & ft_atoi(lst2->content)));
 }
 
 char	*ft_ou(t_list *lst1, t_list *lst2)
+/*fonction pour le 'ou inclusif' binaire => | */
 {
 	return (ft_itoa(ft_atoi(lst1->content) | ft_atoi(lst2->content)));
 }
 
 void	*ft_neg(void *lst)
+/* fonction pour inverser les bits => ~ */
 {
 	unsigned char	i;
 
@@ -39,6 +43,7 @@ void	*ft_neg(void *lst)
 }
 
 static t_list		*ft_lstmap1(t_list *lst1, void *(*f)(void *), void (*del)(void *))
+/* ma fonction ft_lstmap de  libft n'est pas opé ! */
 {
 	t_list		*new_lst;
 	t_list		*temp;
@@ -59,6 +64,7 @@ static t_list		*ft_lstmap1(t_list *lst1, void *(*f)(void *), void (*del)(void *)
 }
 
 static t_list		*ft_lstmaps(t_list *lst1, t_list *lst2, char *(*f)(t_list *,t_list *), void (*del)(void *))
+/* permet de renvoyer un t_list à partir d'une fonction f() qui utiliser deux t_list */
 {
 	t_list		*new_lst;
 	t_list		*temp;
@@ -81,6 +87,9 @@ static t_list		*ft_lstmaps(t_list *lst1, t_list *lst2, char *(*f)(t_list *,t_lis
 
 
 static void print_list(t_list *liste, int binaire)
+/* imprime une adresse :
+				si binaire = 1 ==> sous forme binaire 
+				si binaire = 0 ==> sous forme decimale*/
 {
 	while (liste)
 	{		

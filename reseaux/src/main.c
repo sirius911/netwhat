@@ -28,6 +28,7 @@ static void ft_resultat(t_list *ip, t_list *masque, t_list *adr_reseau, t_list *
 	print_list(masque, 0);
 	ft_putstr("\t ==> ");
 	print_list(masque, 1);
+	ft_printf("\nEcriture CIDR : %s.%s.%s.%s/%d\n",ip->content,ip->next->content,ip->next->next->content,ip->next->next->next->content,ft_nb_bit_masque(masque));
 	ft_putstr("\nAddress reseau : ");
 	print_list(adr_reseau,0);
 	ft_putstr(" ==> ");

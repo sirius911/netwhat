@@ -100,10 +100,11 @@ int 		ft_ip_prive(t_list *ip, t_list *masque)
 		return (0);
 }
 
-int 		ft_nb_postes(t_list *masque)
+int 	ft_nb_bit_masque(t_list *masque)
+	/* renvoi la forme cidr du masque
+		==> le nb de bit == 1*/
 {
 	int 	nb_bits_one;
-	int 	nb_zero_masque;
 
 	nb_bits_one = 0;
 	while (masque)
@@ -111,8 +112,13 @@ int 		ft_nb_postes(t_list *masque)
 		nb_bits_one += ft_nb_bit(ft_atoi(masque->content));
 		masque = masque->next;
 	}
-	// ft_printf("Nb de bits == 1 ==> %d\n", nb_bits_one);
-	nb_zero_masque = 32 - nb_bits_one;
-	// ft_printf("Nb de bits == 0 ==> %d\n", nb_zero_masque);
+	return (nb_bits_one);
+}
+
+int 		ft_nb_postes(t_list *masque)
+{
+	int 	nb_zero_masque;
+
+	nb_zero_masque = 32 - ft_nb_bit_masque(masque);
 	return (ft_power(2, nb_zero_masque)); /* 2^nb de zero dans le masque*/
 }

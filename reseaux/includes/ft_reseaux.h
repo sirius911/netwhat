@@ -27,5 +27,6 @@ t_list		*ft_masq_cidr(char *masq_cidr);
 int			ft_nb_bit(unsigned char c);
 int 		ft_ip_prive(t_list *ip, t_list *masque);
 int 		ft_nb_postes(t_list *masque);
+int 		ft_nb_bit_masque(t_list *masque);
 
 #endif

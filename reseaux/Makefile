@@ -16,17 +16,26 @@ NAME = reseaux
 
 #	Sources
 
-SRC			=	main.c
+SRC			=	src/main.c \
+				src/ft_power.c src/ft_functions.c src/ft_lst.c src/ft_cidr.c
 
 CC			=	gcc
 
 FLAGS		= -Werror -Wextra -Wall
 
+HEADER		= -I includes/
+
+OBJ 		= $(SRC:.c=.o)
+
 all : $(NAME)
 
+.c.o:
+			@${CC} ${FLAGS} ${HEADER} -c $< -o ${<:.c=.o}
+			@echo "compilation : "$< "\033[32mok\033[0m"
 
-$(NAME): $(SRC)
-	$(CC) $(FLAGS) $(SRC) -o $(NAME) -L. -lft -L. -lftprintf
+$(NAME): $(OBJ)
+	@$(CC) $(FLAGS) $(HEADER) $(OBJ) -o $(NAME) -L. -lft -L. -lftprintf
+	@echo "création de reseaux : \033[32mok\033[0m"
 
 clean:
 	rm -rf $(OBJ)

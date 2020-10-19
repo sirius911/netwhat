@@ -93,7 +93,7 @@ t_list		*ft_masq_cidr(char *masq_cidr)
 int 		ft_ip_prive(t_list *ip, t_list *masque)
 {
 	if ((ft_atoi(ip->content) == 10 && ft_atoi(masque->content) == 255) ||
-		(ft_atoi(ip->content) == 172 && ft_atoi(ip->next->content) == 16) ||
+		(ft_atoi(ip->content) == 172 && ft_atoi(ip->next->content) >= 16 && ft_atoi(ip->next->content) <= 31) ||
 		(ft_atoi(ip->content) == 192 && ft_atoi(ip->next->content) == 168))
 		return (1);
 	else

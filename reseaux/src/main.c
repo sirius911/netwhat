@@ -58,6 +58,7 @@ int		main(int argc, char **argv)
 	int 	i;
 
 	if (argc == 3)
+		/* [addr_ip] [masque] XXX.XXX.XXX.XXX  MMM.MMM.MMM.MMM*/
 	{
 		ip = ft_lstsplit(argv[1], '.');
 		masque = ft_lstsplit(argv[2], '.');
@@ -67,6 +68,7 @@ int		main(int argc, char **argv)
 		ft_resultat(ip, masque, adr_reseau, broadcast);
 	}
 	else if (argc == 2)
+		/* [addr_ip/cidr] XXX.XXX.XXX.XXX/cidr*/ 
 	{
 		masq_cidr = ft_strrchr(argv[1],'/');
 		if (masq_cidr)
@@ -79,6 +81,7 @@ int		main(int argc, char **argv)
 				ip_char[i] = argv[1][i];
 				i++;
 			}
+			ip_char[i] = '\0';
 			ip = ft_lstsplit(ip_char, '.');
 			adr_reseau = ft_lstmaps(ip, masque, &ft_et, &ft_free);/*on applique le & binaire sur IP*/
 			masq_neg = ft_lstmap1(masque, &ft_neg, &ft_free);	/* on inverse les bits du masque */
@@ -94,7 +97,7 @@ int		main(int argc, char **argv)
 	}
 	else
 	{
-		ft_putstr("Erreur \n\treseaux [addr_ip] [addr_masq]\n\texemple : reseaux 10.0.0.255 255.255.255.0\n\treseaux [nbr]\n");
+		ft_putstr("Erreur \n\treseaux [addr_ip] [addr_masq]\n\texemple : reseaux 10.0.0.255 255.255.255.0\n\treseaux [adrr_ip/cidr]\n\treseaux [nbr]\n");
 		return (0);
 	}
 	ft_lstclear(&ip, &ft_free);

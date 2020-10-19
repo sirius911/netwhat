@@ -16,9 +16,9 @@
 
 static void ft_resultat(t_list *ip, t_list *masque, t_list *adr_reseau, t_list *broadcast)
 {
-	t_list	*last;
-	int 	nb_poste;
-	int nb_zero_masque;
+	// t_list	*last;
+	// int 	nb_poste;
+	// int nb_zero_masque;
 
 	ft_putstr("IP   : ");
 	print_list(ip, 0);
@@ -37,10 +37,12 @@ static void ft_resultat(t_list *ip, t_list *masque, t_list *adr_reseau, t_list *
 	ft_putstr(" ==> ");
 	print_list(broadcast, 1);
 	ft_putchar('\n');
-	last = ft_lstlast(masque);
-	nb_zero_masque = 8 - ft_nb_bit(ft_atoi(last->content));
-	nb_poste = ft_power(2, nb_zero_masque); /* 2^nb de zero dans le masque*/
-	ft_printf("Nb d'adresse dispo = 2^%d [nb zero du masque] = %d (addr reseau & broadcast inclus)\n", nb_zero_masque, nb_poste);
+	if (ft_ip_prive(ip, masque))
+		ft_printf("IP : %s.%s => Privée\n", ip->content,ip->next->content);
+	else
+		ft_printf("IP : %s.%s => internet\n", ip->content,ip->next->content);
+	ft_printf("Nb d'adresse dispo = %d [2^nb zero du masque](addr reseau & broadcast inclus)\n", ft_nb_postes(masque));
+
 }
 
 int		main(int argc, char **argv)

@@ -89,3 +89,30 @@ t_list		*ft_masq_cidr(char *masq_cidr)
 	}
 	return (new_lst);
 }
+
+int 		ft_ip_prive(t_list *ip, t_list *masque)
+{
+	if ((ft_atoi(ip->content) == 10 && ft_atoi(masque->content) == 255) ||
+		(ft_atoi(ip->content) == 172 && ft_atoi(ip->next->content) == 16) ||
+		(ft_atoi(ip->content) == 192 && ft_atoi(ip->next->content) == 168))
+		return (1);
+	else
+		return (0);
+}
+
+int 		ft_nb_postes(t_list *masque)
+{
+	int 	nb_bits_one;
+	int 	nb_zero_masque;
+
+	nb_bits_one = 0;
+	while (masque)
+	{
+		nb_bits_one += ft_nb_bit(ft_atoi(masque->content));
+		masque = masque->next;
+	}
+	// ft_printf("Nb de bits == 1 ==> %d\n", nb_bits_one);
+	nb_zero_masque = 32 - nb_bits_one;
+	// ft_printf("Nb de bits == 0 ==> %d\n", nb_zero_masque);
+	return (ft_power(2, nb_zero_masque)); /* 2^nb de zero dans le masque*/
+}

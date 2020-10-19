@@ -25,5 +25,7 @@ t_list		*ft_lstmaps(t_list *lst1, t_list *lst2, char *(*f)(t_list *,t_list *), v
 void 		print_list(t_list *liste, int binaire);
 t_list		*ft_masq_cidr(char *masq_cidr);
 int			ft_nb_bit(unsigned char c);
+int 		ft_ip_prive(t_list *ip, t_list *masque);
+int 		ft_nb_postes(t_list *masque);
 
 #endif

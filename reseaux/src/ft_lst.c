@@ -17,29 +17,7 @@
 void	ft_free(void *content)
 /*fonction pour free les listes*/
 {
-	free (content);
-	content = NULL;
-}
-
-t_list		*ft_lstmap1(t_list *lst1, void *(*f)(void *), void (*del)(void *))
-/* ma fonction ft_lstmap de  libft n'est pas opé ! */
-{
-	t_list		*new_lst;
-	t_list		*temp;
-
-	new_lst = NULL;
-	while (lst1)
-	{
-		temp = ft_lstnew(f(lst1->content));
-		if (!temp)
-		{
-			ft_lstclear(&new_lst, (*del));
-			return (NULL);
-		}
-		ft_lstadd_back(&new_lst, temp);
-		lst1 = lst1->next;
-	}
-	return (new_lst);
+	ft_memdel(&content);
 }
 
 t_list		*ft_lstmaps(t_list *lst1, t_list *lst2, char *(*f)(t_list *,t_list *), void (*del)(void *))

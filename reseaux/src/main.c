@@ -63,7 +63,7 @@ int		main(int argc, char **argv)
 		ip = ft_lstsplit(argv[1], '.');
 		masque = ft_lstsplit(argv[2], '.');
 		adr_reseau = ft_lstmaps(ip, masque, &ft_et, &ft_free);/*on applique le & binaire sur IP*/
-		masq_neg = ft_lstmap1(masque, &ft_neg, &ft_free);	/* on inverse les bits du masque */
+		masq_neg = ft_lstmap(masque, &ft_neg, &ft_free);	/* on inverse les bits du masque */
 		broadcast = ft_lstmaps(adr_reseau, masq_neg, &ft_ou, &ft_free);	/* on applique un ou inclusif sur IP et inv du masque */
 		ft_resultat(ip, masque, adr_reseau, broadcast);
 	}
@@ -84,7 +84,7 @@ int		main(int argc, char **argv)
 			ip_char[i] = '\0';
 			ip = ft_lstsplit(ip_char, '.');
 			adr_reseau = ft_lstmaps(ip, masque, &ft_et, &ft_free);/*on applique le & binaire sur IP*/
-			masq_neg = ft_lstmap1(masque, &ft_neg, &ft_free);	/* on inverse les bits du masque */
+			masq_neg = ft_lstmap(masque, &ft_neg, &ft_free);	/* on inverse les bits du masque */
 			broadcast = ft_lstmaps(adr_reseau, masq_neg, &ft_ou, &ft_free);	/* on applique un ou inclusif sur IP et inv du masque */
 			ft_resultat(ip, masque, adr_reseau, broadcast);
 		}

@@ -85,7 +85,7 @@ void				ft_lstdelone(t_list *alist, void (*del)(void *));
 void				ft_lstadd_front(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap
-					(t_list *lst, t_list *(*f)(t_list *), void (*del)(void *));
+					(t_list *lst, void *(*f)(void *), void (*del)(void *));
 void				*ft_calloc(size_t count, size_t size);
 t_list				*ft_lstsplit(char const *s, char c);
 t_list				*ft_lstlast(t_list *lst);

@@ -19,7 +19,7 @@ NAME = reseaux
 SRC			=	src/main.c \
 				src/ft_power.c src/ft_functions.c src/ft_lst.c src/ft_cidr.c
 
-CC			=	gcc
+CC			=	clang
 
 FLAGS		= -Werror -Wextra -Wall
 

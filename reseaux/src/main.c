@@ -57,6 +57,7 @@ int		main(int argc, char **argv)
 	char 	*masq_cidr;
 	int 	i;
 
+	system("clear");
 	if (argc == 3)
 		/* [addr_ip] [masque] XXX.XXX.XXX.XXX  MMM.MMM.MMM.MMM*/
 	{
